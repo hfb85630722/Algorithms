@@ -26,7 +26,7 @@ def get_board(size):
 
 def print_solutions(solutions):
     """Prints all the solutions in user friendly way"""
-    for sol in solutions:
+    for sol in solutions:#假设size为5，实际上得到的solutions是每五段是一个list的元素
         # print(sol)
         for row in sol:
             print(row)
@@ -35,7 +35,7 @@ def print_solutions(solutions):
 
 def is_safe(board, row, col, size):
     """Check if it's safe to place a queen at board[x][y]"""
-    # check row on left side
+    # check row on left side#检查左面那一侧
     for iy in range(col):
         if board[row][iy] == 1:
             return False
@@ -63,16 +63,16 @@ def solve(board, col, size):
     # if col >= size:
     #     return
 
-    for i in range(size):
+    for i in range(size):#真是牛逼的逻辑
         if is_safe(board, i, col, size):
             board[i][col] = 1
             if col == size - 1:
                 add_solution(board)
-                board[i][col] = 0
+                board[i][col] = 0#既然已经得到了一个solution就把最后一个1改为0
                 return
             solve(board, col + 1, size)
             # backtrack
-            board[i][col] = 0
+            board[i][col] = 0#将前一列也改为0，这样才能往下找，因为每个列只能有一个皇后
 
 
 def add_solution(board):
