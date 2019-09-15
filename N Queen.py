@@ -1,5 +1,5 @@
 import copy
-
+#关于这个我画了一个图
 solutions=[]
 
 def take_input():
