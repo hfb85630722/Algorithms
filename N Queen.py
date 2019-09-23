@@ -66,13 +66,14 @@ def solve(board, col, size):
     for i in range(size):#真是牛逼的逻辑
         if is_safe(board, i, col, size):
             board[i][col] = 1
+            solve(board, col + 1, size)
             if col == size - 1:
                 add_solution(board)
                 board[i][col] = 0#既然已经得到了一个solution就把最后一个1改为0
-                return
-            solve(board, col + 1, size)#
+                return#跳出来到上一个循环
+
             # backtrack
-            board[i][col] = 0#将前一列也改为0，这样才能往下找，因为每个列只能有一个皇后
+            board[i][col] = 0#将最后一列的前一列那个queen的位置也改为0，随着i增大，这样才能往下找，因为每个列只能有一个皇后
 
 
 def add_solution(board):
@@ -87,7 +88,7 @@ board = get_board(size)
 
 solve(board, 0, size)
 
-print(solutions)
+#print(solutions)#就看看solution是什么鬼
 
 print_solutions(solutions)
 
