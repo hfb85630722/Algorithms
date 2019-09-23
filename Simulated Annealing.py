@@ -5,18 +5,18 @@ import matplotlib.pyplot as plt
 # reference from https://www.youtube.com/watch?v=XNMGq5Jjs5w&t=578s
 def h(x):
     if x<-1 or x>1:
-        y=0
+        return 0
     else:
-        y=np.cos(50*x)+np.sin(20*x)
-    return y
+        return np.cos(50*x)+np.sin(20*x)
+
 
 hv = np.vectorize(h)
-
 X = np.linspace(-1, 2, num=1000)
-# plt.plot(X,hv(X))
+# k=hv(X)
+# plt.plot(X,k)
 # plt.show()
 
-def simple_greedy_search(func,start=0,N=100): #This algorithm is used to compare with Smulated Annealing
+def simple_greedy_search(func,start=0,N=100): #This algorithm is used to compare with Simulated Annealing
     x=start
     history=[]
     for i in range(N):

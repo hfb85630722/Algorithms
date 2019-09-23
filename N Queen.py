@@ -70,7 +70,7 @@ def solve(board, col, size):
                 add_solution(board)
                 board[i][col] = 0#既然已经得到了一个solution就把最后一个1改为0
                 return
-            solve(board, col + 1, size)
+            solve(board, col + 1, size)#
             # backtrack
             board[i][col] = 0#将前一列也改为0，这样才能往下找，因为每个列只能有一个皇后
 
